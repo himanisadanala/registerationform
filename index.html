@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Templates</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Animations --- */
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* --- Theme 1: Glassmorphism (Event) --- */
+        .glass-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .glass-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .glass-input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .glass-input:focus { background: rgba(255, 255, 255, 0.2); outline: none; }
+        .glass-label { color: rgba(255,255,255, 0.7); font-size: 0.85rem; }
+        .glass-val { font-weight: 600; font-size: 1.1rem; }
+
+        /* --- Theme 2: Corporate (Multi-step) --- */
+        .corp-bg {
+            background-color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        .step-active { background-color: #2563eb; color: white; border-color: #2563eb; }
+        .step-inactive { background-color: white; color: #94a3b8; border-color: #e2e8f0; }
+
+        /* --- Theme 3: Gaming (Dark/Neon) --- */
+        .gaming-bg {
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            font-family: 'Orbitron', sans-serif;
+        }
+        .gaming-input {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #ec4899;
+        }
+        .gaming-input:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 8px rgba(236, 72, 153, 0.5);
+        }
+        .neon-text { text-shadow: 0 0 5px #ec4899; }
+        .clip-path-slant { clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); }
+
+    </style>
+</head>
+<body class="corp-bg min-h-screen transition-colors duration-500" id="mainBody">
+
+    <!-- Navigation / Theme Switcher -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="font-bold text-gray-800 text-lg"><i class="fas fa-layer-group text-blue-600 mr-2"></i>FormGallery</div>
+            <div class="flex space-x-2">
+                <button onclick="switchTheme('glass')" class="px-4 py-2 text-sm font-medium rounded-full hover:bg-gray-100 transition text-purple-600">Event</button>
+                <button onclick="switchTheme('corp')" class="px-4 py-2 text-sm font-medium rounded-full hover:bg-gray-100 transition text-blue-600">Job</button>
+                <button onclick="switchTheme('gaming')" class="px-4 py-2 text-sm font-medium rounded-full hover:bg-gray-100 transition text-pink-500">Gaming</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Container for Forms -->
+    <div class="pt-24 pb-12 px-4 flex justify-center items-center min-h-screen">
+        
+        <!-- ========================================== -->
+        <!-- FORM 1: GLASSMORPHISM EVENT REGISTRATION -->
+        <!-- ========================================== -->
+        <div id="form-glass" class="w-full max-w-lg hidden fade-in">
+            <div class="glass-card rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+                <!-- Decoration circles -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+
+                <div class="relative z-10 text-white">
+                    <h2 class="text-3xl font-bold mb-1 text-center">FutureTech 2025</h2>
+                    <p class="text-center text-white/80 mb-8 text-sm">Join the innovation revolution.</p>
+
+                    <form id="glassForm">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-1 text-white/90">Attendee Name</label>
+                                <input type="text" id="g_name" required class="glass-input w-full px-4 py-3 rounded-lg" placeholder="Jane Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-1 text-white/90">Email</label>
+                                <input type="email" id="g_email" required class="glass-input w-full px-4 py-3 rounded-lg" placeholder="jane@example.com">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm mb-1 text-white/90">Ticket Type</label>
+                                    <select id="g_ticket" class="glass-input w-full px-4 py-3 rounded-lg appearance-none cursor-pointer">
+                                        <option value="Standard" class="text-gray-800">Standard</option>
+                                        <option value="VIP" class="text-gray-800">VIP Access</option>
+                                        <option value="Student" class="text-gray-800">Student</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-1 text-white/90">T-Shirt Size</label>
+                                    <select id="g_size" class="glass-input w-full px-4 py-3 rounded-lg appearance-none cursor-pointer">
+                                        <option value="S" class="text-gray-800">S</option>
+                                        <option value="M" class="text-gray-800">M</option>
+                                        <option value="L" class="text-gray-800">L</option>
+                                        <option value="XL" class="text-gray-800">XL</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-white text-purple-700 font-bold py-3 rounded-lg mt-6 hover:bg-opacity-90 transition transform hover:scale-105 shadow-lg">
+                                Reserve Spot
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Glass Result -->
+                    <div id="glassResult" class="hidden mt-6 bg-white/10 p-6 rounded-lg border border-white/30 text-left">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-check-circle text-4xl mb-2 text-green-300"></i>
+                            <h3 class="font-bold text-xl">Confirmed!</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="border-b border-white/20 pb-2">
+                                <span class="glass-label block">Name</span>
+                                <span class="glass-val" id="res_g_name"></span>
+                            </div>
+                            <div class="border-b border-white/20 pb-2">
+                                <span class="glass-label block">Email</span>
+                                <span class="glass-val" id="res_g_email"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <div>
+                                    <span class="glass-label block">Ticket</span>
+                                    <span class="glass-val" id="res_g_ticket"></span>
+                                </div>
+                                <div>
+                                    <span class="glass-label block">Size</span>
+                                    <span class="glass-val" id="res_g_size"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="location.reload()" class="w-full mt-6 py-2 bg-white/20 hover:bg-white/30 rounded text-sm transition">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- FORM 2: CORPORATE MULTI-STEP JOB APP -->
+        <!-- ========================================== -->
+        <div id="form-corp" class="w-full max-w-2xl hidden fade-in">
+            <div class="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
+                <!-- Header -->
+                <div class="bg-gray-50 px-8 py-6 border-b border-gray-100 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Senior Developer Application</h2>
+                        <p class="text-sm text-gray-500">Job ID: #DEV-2025-08</p>
+                    </div>
+                    <div class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full font-bold">HIRING</div>
+                </div>
+
+                <!-- Steps Indicator -->
+                <div class="px-8 pt-6" id="corp-steps-ui">
+                    <div class="flex items-center justify-between relative">
+                        <div class="absolute left-0 top-1/2 w-full h-1 bg-gray-200 -z-10"></div>
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full border-2 step-active bg-blue-600 text-white font-bold text-sm" id="step1-indicator">1</div>
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full border-2 step-inactive bg-white" id="step2-indicator">2</div>
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full border-2 step-inactive bg-white" id="step3-indicator">3</div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-2 font-medium">
+                        <span>Personal</span>
+                        <span>Experience</span>
+                        <span>Review</span>
+                    </div>
+                </div>
+
+                <!-- ADDED novalidate to prevent hidden input blocking -->
+                <form id="corpForm" class="p-8" novalidate>
+                    <!-- Step 1: Personal Info -->
+                    <div class="step-content" id="step1">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Personal Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" id="c_fname" class="w-full border-gray-300 border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" id="c_lname" class="w-full border-gray-300 border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">LinkedIn URL</label>
+                            <input type="url" id="c_linkedin" class="w-full border-gray-300 border rounded-md p-2 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="linkedin.com/in/johndoe">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" onclick="nextStep(2)" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">Next &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Experience -->
+                    <div class="step-content hidden" id="step2">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Experience</h3>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
+                            <select id="c_exp" class="w-full border-gray-300 border rounded-md p-2 focus:ring-2 focus:ring-blue-500">
+                                <option>0-2 Years</option>
+                                <option>3-5 Years</option>
+                                <option>5+ Years</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Key Skills</label>
+                            <textarea id="c_skills" class="w-full border-gray-300 border rounded-md p-2 focus:ring-2 focus:ring-blue-500 h-24" placeholder="React, Node.js, SQL..."></textarea>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" onclick="nextStep(1)" class="text-gray-500 hover:text-gray-700 font-medium">Back</button>
+                            <button type="button" onclick="nextStep(3)" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">Review &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Success/Review -->
+                    <div class="step-content hidden text-center" id="step3">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-file-alt text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Submit Application?</h3>
+                        <p class="text-gray-500 mb-6">Please confirm your details before sending.</p>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-md font-bold hover:bg-green-700 shadow-md">
+                            Submit Application
+                        </button>
+                        <button type="button" onclick="nextStep(2)" class="text-sm text-gray-500 mt-4 hover:underline">Go Back</button>
+                    </div>
+                </form>
+
+                <!-- Corp Result (MOVED OUTSIDE FORM for cleaner DOM handling) -->
+                <div id="corpResult" class="hidden p-8 bg-green-50 fade-in">
+                    <div class="border-b border-green-200 pb-4 mb-4">
+                        <div class="flex items-center text-green-700 mb-2">
+                            <i class="fas fa-check-circle mr-2 text-xl"></i>
+                            <h3 class="text-2xl font-bold">Application Received</h3>
+                        </div>
+                        <p class="text-green-600">We will review your details shortly.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-y-4 text-sm">
+                        <div>
+                            <span class="block text-gray-500 font-medium">Applicant Name</span>
+                            <span class="block text-gray-800 font-bold text-lg" id="res_c_name"></span>
+                        </div>
+                        <div>
+                            <span class="block text-gray-500 font-medium">LinkedIn Profile</span>
+                            <span class="block text-blue-600 truncate" id="res_c_linkedin"></span>
+                        </div>
+                        <div>
+                            <span class="block text-gray-500 font-medium">Experience</span>
+                            <span class="block text-gray-800" id="res_c_exp"></span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block text-gray-500 font-medium">Skills</span>
+                            <div class="mt-2 flex flex-wrap gap-2" id="res_c_skills_container">
+                                <!-- Skills injected here -->
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="location.reload()" class="mt-8 w-full py-3 bg-white border border-green-200 text-green-700 font-semibold rounded hover:bg-green-100">Start New Application</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- FORM 3: GAMING TOURNAMENT REGISTRATION -->
+        <!-- ========================================== -->
+        <div id="form-gaming" class="w-full max-w-lg hidden fade-in">
+            <div class="bg-slate-900 border border-pink-500 rounded-none p-1 shadow-[0_0_20px_rgba(236,72,153,0.3)] relative">
+                <!-- Corner accents -->
+                <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-pink-500"></div>
+                <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-pink-500"></div>
+                <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-pink-500"></div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-pink-500"></div>
+
+                <div class="bg-slate-900 p-8 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#ec4899 1px, transparent 1px), linear-gradient(90deg, #ec4899 1px, transparent 1px); background-size: 20px 20px;"></div>
+                    
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold text-white text-center uppercase tracking-widest neon-text mb-2">Neon Arena</h2>
+                        <p class="text-pink-400 text-center text-xs tracking-widest mb-8">// SEASON 5 REGISTRATION //</p>
+
+                        <form id="gamingForm">
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="text-xs text-pink-500 uppercase font-bold tracking-wider">Gamertag</label>
+                                    <input type="text" id="m_gamertag" required class="gaming-input w-full p-3 mt-1 outline-none text-white font-mono" placeholder="Glitch_01">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="text-xs text-pink-500 uppercase font-bold tracking-wider">Region</label>
+                                        <select id="m_region" class="gaming-input w-full p-3 mt-1 outline-none text-white font-mono">
+                                            <option>NA East</option>
+                                            <option>NA West</option>
+                                            <option>Europe</option>
+                                            <option>Asia</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-xs text-pink-500 uppercase font-bold tracking-wider">Platform</label>
+                                        <select id="m_platform" class="gaming-input w-full p-3 mt-1 outline-none text-white font-mono">
+                                            <option>PC</option>
+                                            <option>PS5</option>
+                                            <option>Xbox</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="text-xs text-pink-500 uppercase font-bold tracking-wider">Squad Name (Optional)</label>
+                                    <input type="text" id="m_squad" class="gaming-input w-full p-3 mt-1 outline-none text-white font-mono" placeholder="Team Alpha">
+                                </div>
+                                <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-4 uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_15px_#ec4899] clip-path-slant">
+                                    ENTER TOURNAMENT
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="gamingResult" class="hidden mt-8 border border-green-500 bg-black p-4 font-mono text-sm relative">
+                            <div class="absolute -top-3 left-4 bg-black px-2 text-green-500 text-xs">STATUS: ACCEPTED</div>
+                            <div class="space-y-2 text-green-400">
+                                <p>>> USER: <span class="text-white" id="res_m_tag"></span></p>
+                                <p>>> REGION: <span class="text-white" id="res_m_region"></span></p>
+                                <p>>> PLATFORM: <span class="text-white" id="res_m_platform"></span></p>
+                                <p>>> SQUAD: <span class="text-white" id="res_m_squad"></span></p>
+                                <div class="mt-4 border-t border-green-900 pt-2 text-xs text-green-600 animate-pulse">
+                                    AWAITING SERVER DEPLOYMENT...
+                                </div>
+                            </div>
+                            <button onclick="location.reload()" class="mt-4 w-full border border-green-700 text-green-500 hover:bg-green-900 py-2 text-xs uppercase tracking-widest">Reset Uplink</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. Theme Switcher Logic ---
+        function switchTheme(theme) {
+            $('[id^="form-"]').addClass('hidden');
+            const body = $('#mainBody');
+            body.removeClass('glass-bg corp-bg gaming-bg');
+
+            if(theme === 'glass') {
+                $('#form-glass').removeClass('hidden');
+                body.addClass('glass-bg');
+            } else if (theme === 'corp') {
+                $('#form-corp').removeClass('hidden');
+                body.addClass('corp-bg');
+            } else if (theme === 'gaming') {
+                $('#form-gaming').removeClass('hidden');
+                body.addClass('gaming-bg');
+            }
+        }
+
+        // --- 2. Corporate Multi-Step Logic ---
+        function nextStep(stepNumber) {
+            $('.step-content').addClass('hidden');
+            $(#step${stepNumber}).removeClass('hidden');
+            
+            // Validate Logic would go here (skipped for demo ease)
+            
+            for(let i = 1; i <= 3; i++) {
+                const indicator = $(#step${i}-indicator);
+                if(i <= stepNumber) {
+                    indicator.removeClass('step-inactive bg-white text-gray-500').addClass('step-active bg-blue-600 text-white border-blue-600');
+                } else {
+                    indicator.removeClass('step-active bg-blue-600 text-white border-blue-600').addClass('step-inactive bg-white text-gray-500');
+                }
+            }
+        }
+
+        // --- 3. Submission Logic ---
+        $(document).ready(function() {
+            switchTheme('glass'); 
+
+            // GLASS
+            $('#glassForm').on('submit', function(e) {
+                e.preventDefault();
+                const name = $('#g_name').val();
+                const email = $('#g_email').val();
+                const ticket = $('#g_ticket').val();
+                const size = $('#g_size').val();
+
+                $('#res_g_name').text(name);
+                $('#res_g_email').text(email);
+                $('#res_g_ticket').text(ticket);
+                $('#res_g_size').text(size);
+
+                const btn = $(this).find('button');
+                btn.html('<i class="fas fa-spinner fa-spin"></i> Processing...');
+                setTimeout(() => {
+                    $(this).slideUp();
+                    $('#glassResult').removeClass('hidden').addClass('fade-in');
+                }, 1000);
+            });
+
+            // CORPORATE (FIXED)
+            $('#corpForm').on('submit', function(e) {
+                e.preventDefault();
+                console.log("Corp Submit Triggered"); // Debug log
+
+                // 1. Get Data
+                const fname = $('#c_fname').val() || "Not Provided";
+                const lname = $('#c_lname').val() || "";
+                const linkedin = $('#c_linkedin').val() || "N/A";
+                const exp = $('#c_exp').val();
+                const skills = $('#c_skills').val() || "None listed";
+
+                // 2. Set Data
+                $('#res_c_name').text(fname + " " + lname);
+                $('#res_c_linkedin').text(linkedin);
+                $('#res_c_exp').text(exp);
+                
+                const skillArray = skills.split(',');
+                let skillHtml = '';
+                skillArray.forEach(s => {
+                    if(s.trim() !== '') skillHtml += <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded border border-blue-200">${s.trim()}</span>;
+                });
+                $('#res_c_skills_container').html(skillHtml);
+
+                // 3. Hide Form & Steps UI, Show Result
+                $('#corpForm').hide();
+                $('#corp-steps-ui').hide(); // Hide the 1-2-3 bubbles
+                $('#corpResult').removeClass('hidden').addClass('fade-in');
+            });
+
+            // GAMING
+            $('#gamingForm').on('submit', function(e) {
+                e.preventDefault();
+                const tag = $('#m_gamertag').val();
+                const region = $('#m_region').val();
+                const platform = $('#m_platform').val();
+                const squad = $('#m_squad').val() || "N/A";
+
+                $('#res_m_tag').text(tag);
+                $('#res_m_region').text(region);
+                $('#res_m_platform').text(platform);
+                $('#res_m_squad').text(squad);
+
+                const btn = $(this).find('button');
+                const originalText = btn.text();
+                btn.text('UPLOADING...');
+                
+                setTimeout(() => {
+                    btn.text(originalText);
+                    $(this).slideUp();
+                    $('#gamingResult').removeClass('hidden').addClass('fade-in');
+                }, 1200);
+            });
+        });
+    </script>
+</body>
+</html>
