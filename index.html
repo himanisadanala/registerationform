@@ -385,12 +385,12 @@
         // --- 2. Corporate Multi-Step Logic ---
         function nextStep(stepNumber) {
             $('.step-content').addClass('hidden');
-            $(#step${stepNumber}).removeClass('hidden');
+            $(`#step${stepNumber}`).removeClass('hidden');
             
             // Validate Logic would go here (skipped for demo ease)
             
             for(let i = 1; i <= 3; i++) {
-                const indicator = $(#step${i}-indicator);
+                const indicator = $(`#step${i}-indicator`);
                 if(i <= stepNumber) {
                     indicator.removeClass('step-inactive bg-white text-gray-500').addClass('step-active bg-blue-600 text-white border-blue-600');
                 } else {
@@ -444,7 +444,7 @@
                 const skillArray = skills.split(',');
                 let skillHtml = '';
                 skillArray.forEach(s => {
-                    if(s.trim() !== '') skillHtml += <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded border border-blue-200">${s.trim()}</span>;
+                    if(s.trim() !== '') skillHtml += `<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded border border-blue-200">${s.trim()}</span>`;
                 });
                 $('#res_c_skills_container').html(skillHtml);
 
@@ -481,3 +481,5 @@
     </script>
 </body>
 </html>
+
+
